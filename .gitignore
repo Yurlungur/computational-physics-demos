@@ -60,3 +60,11 @@ target/
 
 #Ipython Notebook
 .ipynb_checkpoints
+*.aux
+*.toc
+*.log
+*.nav
+*.out
+*.snm
+*.synctec.gz
+*.synctex.gz
