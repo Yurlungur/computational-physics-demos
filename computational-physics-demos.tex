@@ -1,6 +1,6 @@
 \documentclass[]{beamer}
 \mode<presentation>
-% Time-stamp: <2016-05-08 15:19:09 (jmiller)>
+% Time-stamp: <2016-05-09 13:38:16 (jmiller)>
 
 % beamer stuff
 % Gives us the bottom line with all the goodies
@@ -107,11 +107,12 @@
   \begin{columns}
     \column{6cm}
     \begin{center}
-      \animategraphics[width=6cm,every1,autoplay,loop]{1}{figures/darts-frame-}{0}{5}
+      \animategraphics[width=6cm,every=1,autoplay,loop]{1}{figures/darts-frame/darts-frame-}{0}{5}
     \end{center}
     \column{6cm}
     \begin{center}
-      \includegraphics[width=6cm]{figures/Darts_gameplay}
+      \includegraphics[width=6cm]{figures/Darts_gameplay}\\
+      {\footnotesize Source: Wikimedia Commons}
     \end{center}
   \end{columns}
 \end{frame}
@@ -137,7 +138,7 @@
 \end{frame}
 
 \begin{frame}
-  \frametitle{Darts and $\pi$}
+  \frametitle{Areas and $\pi$}
   \begin{tikzpicture}
     \coordinate(bcenter) at (4cm,4cm);
     \draw[color=blue] (1,1) rectangle (7,7);
@@ -156,6 +157,27 @@
     {\large Therefore:
       $$\qquad \pi = 4\frac{\color{red}A_c}{\color{blue}A_{sq}}$$};
   \end{tikzpicture}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Darts and $\pi$}
+  \begin{center}
+    {\Large$\pi \approx 4\frac{\text{number of darts in circle}}{\text{number of darts in square}}$}
+    \animategraphics[width=12cm,every=1,autoplay,loop,trim=0 4cm 0 1cm]{5}{figures/monte_carlo_for_pi/monte_carlo_for_pi-}{0}{99}
+    \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Applications}
+  \setlength{\unitlength}{1cm}
+  \begin{picture}(12,8)
+    \put(6,4.5){\includegraphics[width=6cm]{figures/2015_SMICA_CMB}}
+    \put(6.75,4.2){\footnotesize Source: Planck Collaboration}
+    \put(0,0){\includegraphics[height=4cm,trim=20cm 5cm 22cm 5cm,clip]{figures/researchBanner}}
+    \put(1,0){\footnotesize Source: Brian Yee}
+    \put(6.5,0){\includegraphics[height=3.7cm]{figures/BHmerger_LIGO_3600}}
+    \put(0,4){\animategraphics[height=4cm,autoplay,loop]{8}{figures/no-boundary-de-sitter-monte-carlo-3d/frame_}{0}{49}}   
+  \end{picture}
 \end{frame}
 
 \section{Planetary Orbits a la Newton}

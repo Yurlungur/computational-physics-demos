@@ -68,3 +68,4 @@ target/
 *.snm
 *.synctec.gz
 *.synctex.gz
+auto
