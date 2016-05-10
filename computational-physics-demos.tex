@@ -1,6 +1,6 @@
 \documentclass[]{beamer}
 \mode<presentation>
-% Time-stamp: <2016-05-09 13:38:16 (jmiller)>
+% Time-stamp: <2016-05-09 18:48:39 (jmiller)>
 
 % beamer stuff
 % Gives us the bottom line with all the goodies
@@ -70,10 +70,63 @@
 \usetikzlibrary{arrows}
 \usepackage{pgfplots}
 
+
+% Keys to support piece-wise uncovering of elements in TikZ pictures:
+% \node[visible on=<2->](foo){Foo}
+% \node[visible on=<{2,4}>](bar){Bar}   % put braces around comma expressions
+% 
+% Internally works by setting opacity=0 when invisible, which has the 
+% adavantage (compared to \node<2->(foo){Foo} that the node is always there, hence
+% always consumes space plus that coordinate (foo) is always available.
+% 
+% The actual command that implements the invisibility can be overriden
+% by altering the style invisible. For instance \tikzsset{invisible/.style={opacity=0.2}}
+% would dim the "invisible" parts. Alternatively, the color might be set to white, if the
+% output driver does not support transparencies (e.g., PS) 
+% 
+\tikzset{
+  invisible/.style={opacity=0},
+  visible on/.style={alt={#1{}{invisible}}},
+  alt/.code args={<#1>#2#3}{%
+    \alt<#1>{\pgfkeysalso{#2}}{\pgfkeysalso{#3}} % \pgfkeysalso doesn't change the path
+  },
+}
+
 % define a really nice visible "purple"
 \definecolor{gimppurple}{HTML}{AD26FB}
 % a light grey
 \definecolor{lightgrey}{HTML}{E0E0E0}
+% for highlighting
+\definecolor{deepblue}{rgb}{0,0,0.5}
+\definecolor{deepred}{rgb}{0.6,0,0}
+\definecolor{deepgreen}{rgb}{0,0.5,0}
+
+% fonts
+% Default fixed font does not support bold face
+\DeclareFixedFont{\ttb}{T1}{txtt}{bx}{n}{12} % for bold
+\DeclareFixedFont{\ttm}{T1}{txtt}{m}{n}{12}  % for normal
+
+% Python style for highlighting
+\newcommand\pythonstyle{\lstset{
+language=Python,
+basicstyle=\ttm,
+otherkeywords={self},
+keywordstyle=\ttb\color{deepblue},
+emph={__init__},           
+emphstyle=\ttb\color{deepred},
+commentstyle=\ttfamily\color{deepred},
+stringstyle=\color{deepgreen},
+frame=tb,                     
+showstringspaces=false        
+}}
+
+% Python environment
+\lstnewenvironment{python}[1][]
+{
+\pythonstyle
+\lstset{#1}
+}
+{}
 
 \newcommand{\backupbegin}{
    \newcounter{finalframe}
@@ -185,6 +238,48 @@
 
 \begin{frame}
   \frametitle{Newton's Laws}
+  \resizebox{12cm}{!}{
+    \begin{tikzpicture}
+    \filldraw[draw=black,fill=yellow] (1.5,6) circle (1cm);
+    \filldraw[draw=black,fill=green] (5,2) circle(0.4cm);
+    \draw[ultra thick,black,->] (4.6,2.4) -- (2.3,5.1);
+    \draw (3.5,4) node[right]{\Large $F = -\frac{G M m}{r^2}\hat{r}$};
+    \draw (10,7.5) node[above]{\Large $F = m a$};
+    \draw[thick,black,->] (10,7.5) -- (10,5.5);
+    \draw (10,5.5) node[below]{\Large $\# \approx \text{change in speed}$};
+    \draw (10,2.5) node[below]{\Large $\text{change in position} \approx \text{speed}$};
+    \draw[thick,black,->] (10,4.5) -- (10,2.5);
+  \end{tikzpicture}
+}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Predict the Future Given Information Now}
+  \begin{Large}
+  \begin{center}
+    \begin{tabular}{c | c}
+      What we have now & What we get in the future \\
+      \hline
+      position $(x,y)$ & velocity $(v_x,v_y)$ \\ 
+      [1ex]
+      velocity $(v_x,v_y)$ & position $(x,y)$
+    \end{tabular}
+  \end{center}
+\end{Large}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{The Iterative Algorithm: Forward Euler}
+\begin{python}
+for i in range(1,num_times):
+    # update positions
+    x[i] = x[i-1] + vx[i-1]*dt
+    y[i] = y[i-1] + vy[i-1]*dt
+    # update velocities
+    ax,ay = get_acceleration(x[i-1],y[i-1])
+    vx[i] = vx[i-1] + ax*dt
+    vy[i] = vy[i-1] + ay*dt
+\end{python}
 \end{frame}
 
 \section{Structure of a Star}
