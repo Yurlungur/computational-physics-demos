@@ -1,6 +1,6 @@
 \documentclass[]{beamer}
 \mode<presentation>
-% Time-stamp: <2016-05-11 10:53:56 (jmiller)>
+% Time-stamp: <2016-05-11 11:24:10 (jmiller)>
 
 % beamer stuff
 % Gives us the bottom line with all the goodies
@@ -110,13 +110,14 @@
 % Python style for highlighting
 \newcommand\pythonstyle{\lstset{
 language=Python,
-basicstyle=\ttm,
+basicstyle=\ttm\color{deepblue},
 otherkeywords={self},
-keywordstyle=\ttb\color{deepblue},
+keywordstyle=\ttb\color{gimppurple},
 emph={__init__},           
 emphstyle=\ttb\color{deepred},
 commentstyle=\ttfamily\color{deepred},
 stringstyle=\color{deepgreen},
+identifierstyle=\color{black},
 frame=tb,                     
 showstringspaces=false        
 }}
@@ -211,6 +212,25 @@ showstringspaces=false
     {\large Therefore:
       $$\qquad \pi = 4\frac{\color{red}A_c}{\color{blue}A_{sq}}$$};
   \end{tikzpicture}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Darts and $\pi$}
+  \begin{center}
+    {\Large$\pi \approx 4\frac{\text{number of darts in circle}}{\text{number of darts in square}}$}
+  \end{center}
+\begin{python}
+def throw_dart():
+    x = random.uniform(rgl_min,rgl_max)
+    y = random.uniform(rgl_min,rgl_max)
+    return x,y
+for i in range(darts_max):
+    x,y = throw_dart()
+    if in_circle(x,y):
+        darts_in_circle += 1
+    total_darts += 1
+    pi = 4*(darts_in_circle/float(total_darts))
+\end{python}
 \end{frame}
 
 \begin{frame}
