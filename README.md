@@ -1,8 +1,26 @@
 # computational-physics-demos
+
 Some Simple Demonstrations of How to Solve a Physics Problem on a Computer
 
+## Generating the slides
 
-# Image Credits
+These slides use pdflatex.
+```bash
+pdflatex computational-physics-demos.tex
+```
+
+## Code
+
+These slides reference several programs intended as teaching
+tools. These programs can be found in the following repositories:
+
+* [Pi Monte Carlo](https://bitbucket.org/Yurlungur/pi_monte_carlo)
+
+* [Forward Euler Demo](https://github.com/Yurlungur/forward-euler-demo)
+
+* [Stellar Structure Toy](https://github.com/Yurlungur/stellar-structure)
+
+## Image Credits
 
 * [Wikimedia Commons](https://en.wikipedia.org/wiki/Main_Page)
 

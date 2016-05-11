@@ -1,6 +1,6 @@
 \documentclass[]{beamer}
 \mode<presentation>
-% Time-stamp: <2016-05-10 17:26:55 (jmiller)>
+% Time-stamp: <2016-05-11 10:53:56 (jmiller)>
 
 % beamer stuff
 % Gives us the bottom line with all the goodies
@@ -43,6 +43,7 @@
 \usepackage{multicol}
 \usepackage{mdframed}
 %\usepackage{scalerel}
+\usepackage{hyperref}
 
 % Macros
 
@@ -348,6 +349,37 @@ for i in range(1,num_times):
     \draw (9.5,5.5) node {\Huge \color{red} $\approx$};
     \draw (9.5,4.5) node {\Large \color{blue} mass  inside shell};
   \end{tikzpicture}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Mass, Radius}
+  \begin{center}
+    \includegraphics[height=8cm]{figures/star_profile}
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Mass, Radius}
+  \setlength{\unitlength}{1cm}
+  \begin{picture}(12,8)
+    \put(0,0){\includegraphics[width=4cm]{figures/star_profile}}
+    \put(2,2){\fcolorbox{black}{white}{\includegraphics[width=10cm]{figures/mass_vs_radius}}}
+    \put(5,1.5){\footnotesize Source: Wikimedia Commons}
+  \end{picture}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Code}
+  \begin{itemize}
+  \item These slides:\\ 
+    {\small\url{https://github.com/Yurlungur/computational-physics-demos}}
+  \item Monte Carlo for $\pi$:\\
+    {\small\url{https://bitbucket.org/Yurlungur/pi_monte_carlo}}
+  \item Newton's Laws:\\ 
+    {\small\url{https://github.com/Yurlungur/forward-euler-demo}}
+  \item Stellar Structure:\\ 
+    {\small \url{https://github.com/Yurlungur/stellar-structure}}
+  \end{itemize}
 \end{frame}
 
 \end{document}
