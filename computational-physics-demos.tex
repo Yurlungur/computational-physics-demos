@@ -1,6 +1,6 @@
 \documentclass[]{beamer}
 \mode<presentation>
-% Time-stamp: <2016-05-09 18:48:39 (jmiller)>
+% Time-stamp: <2016-05-10 17:26:55 (jmiller)>
 
 % beamer stuff
 % Gives us the bottom line with all the goodies
@@ -282,11 +282,72 @@ for i in range(1,num_times):
 \end{python}
 \end{frame}
 
+\begin{frame}
+  \frametitle{Results}
+  \begin{columns}
+    \column{6cm}
+    \begin{center}
+      \animategraphics[height=4cm,every=1,autoplay,loop]{5}{figures/forward-euler-ypert-circle/frame-}{001}{085}
+      \animategraphics[height=4cm,every=1,autoplay,loop]{5}{figures/forward-euler-ypert-ellipse/frame-}{001}{092}
+    \end{center}
+    \column{6cm}
+    \begin{center}
+      \animategraphics[height=4cm,every=1,autoplay,loop]{5}{figures/forward-euler-ypert-hyperbola/frame-}{001}{085}
+      \animategraphics[height=4cm,every=1,autoplay,loop]{5}{figures/forward-euler-ypert-spiral/frame-}{001}{092}
+    \end{center}
+  \end{columns}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Applications}
+  \begin{columns}
+    \column{6cm}
+     \begin{center}
+       \includegraphics[height=3.4cm]{figures/millennium_many_body}\\
+       {\footnotesize Source: Millennium Simulation}\\
+       \vspace{0.2cm}
+       \includegraphics[height=3.4cm]{figures/Beta_volren_0123_small}\\
+       {\footnotesize Source: M\"{o}sta et al.}
+       \vspace{0.1cm}
+     \end{center}
+     \column{6cm}
+     \begin{center}
+       \includegraphics[height=3.4cm]{figures/black-hole-shadow}\\
+       {\footnotesize Source: Avery Broderick}\\
+       \vspace{0.2cm}
+       \includegraphics[height=3.4cm]{figures/bbh_sxs}\\
+       {\footnotesize Source: The SXS Collaboration}
+       \vspace{0.1cm}
+     \end{center}
+  \end{columns}
+\end{frame}
+
 \section{Structure of a Star}
 \label{sec:star}
 
 \begin{frame}
   \frametitle{Math is our X-Ray Vision}
+  \begin{center}
+    \includegraphics[height=8cm]{figures/xrayspex}\\
+    {\footnotesize Source: Comic Book Resources}
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Seeing Inside a Star}
+  \setlength{\unitlength}{1cm}
+  \begin{tikzpicture}
+    \coordinate (scenter) at (3.5cm,4cm);
+    \filldraw[fill=yellow,draw=black] (scenter) circle (3cm);
+    \draw[thick,black] (scenter) circle (1.5cm);
+    \draw (scenter) node {interior mass};
+    \draw (3.5cm,2.5cm) node[below] {exterior mass};
+    \draw[ultra thick,black,<-] (4,5.5) 
+    -- (6,8) -- (6.5,8) node[right] {arbitrarily chosen shell};
+    \draw (9.5,6.5) node {\Large \color{blue} change in force on shell};
+    \draw (9.5,5.5) node {\Huge \color{red} $\approx$};
+    \draw (9.5,4.5) node {\Large \color{blue} mass  inside shell};
+  \end{tikzpicture}
 \end{frame}
 
 \end{document}
